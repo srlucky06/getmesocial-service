@@ -7,10 +7,17 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
- @Autowired
- private UserRepository userRepository;
- public User getUser(){
-     return userRepository.getUser();
 
+    @Autowired
+    private UserRepository userRepository;
+
+    public User getUser() {
+        return userRepository.getUser();
+
+    }
+
+    public User saveUser(User user) {
+
+        return userRepository.saveUser(user);
     }
 }
