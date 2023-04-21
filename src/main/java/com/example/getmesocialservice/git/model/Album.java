@@ -1,20 +1,27 @@
 package com.example.getmesocialservice.git.model;
 
+import org.springframework.data.annotation.Id;
+
 public class Album {
-   private int albumId;
-   private String name;
-    private String description;
-    private String coverPicUrl;
-public Album(int albumId,String name,String description,String coverPicUrl){
+    @Id
+    private String albumId;
+    private String name;
+    private String coverPhotoUrl;
+    private String  createdBy;
+    private String dateCreated;
+public Album(String albumId,String name,String coverPhotoUrl,String createdBy,String dateCreated){
     this.albumId= albumId;
     this.name= name;
-    this.description= description;
-    this.coverPicUrl= coverPicUrl;
-    }
-    public int getAlbumId() {
+    this.coverPhotoUrl= coverPhotoUrl;
+    this.createdBy= createdBy;
+    this.dateCreated= dateCreated;
+
+
+}
+    public String getAlbumId() {
         return albumId;
     }
-    public void setAlbumId(int albumId) {
+    public void setAlbumId(String albumId) {
         this.albumId = albumId;
     }
     public String getName() {
@@ -23,17 +30,24 @@ public Album(int albumId,String name,String description,String coverPicUrl){
     public void setName(String name) {
         this.name = name;
     }
-    public String getDescription() {
-        return description;
+    public String getCoverPhotoUrl() {
+        return coverPhotoUrl;
     }
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCoverPhotoUrl(String coverPhotoUrl) {
+        this.coverPhotoUrl= coverPhotoUrl;
     }
-    public String getCoverPicUrl() {
-        return coverPicUrl;
+    public String getCreatedBy() {
+        return createdBy;
     }
-    public void setCoverPicUrl(String coverPicUrl) {
-        this.coverPicUrl = coverPicUrl;
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
     }
+    public String getDateCreated() {
+        return dateCreated;
+    }
+    public void setDateCreated(String dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
 
 }
