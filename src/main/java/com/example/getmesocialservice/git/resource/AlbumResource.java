@@ -1,11 +1,11 @@
 package com.example.getmesocialservice.git.resource;
 
+import com.example.getmesocialservice.git.exception.RestrictedInfoException;
 import com.example.getmesocialservice.git.model.Album;
-import com.example.getmesocialservice.git.model.User;
 import com.example.getmesocialservice.git.service.AlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
+import java.util.NoSuchElementException;
 import java.util.List;
 
 
@@ -25,10 +25,22 @@ import java.util.List;
         return albumService.getAllAlbums();
     }
 
+    @GetMapping("/find-by-name")
+    public List<Album> getByName(@RequestParam("name") String name) throws RestrictedInfoException {
+        if ( name.length() >= 10)  {
+            throw new RestrictedInfoException();
+        }
+        return albumService.getByName(name);
 
-    @GetMapping("/find")
-    public List<Album> getById(@RequestParam(name="albumId") String albumId) {
-        return albumService.getByAlbumId(albumId);
+    }
+
+    @GetMapping("/find-by-createdBy")
+    public List<Album> getByCreatedBy(@RequestParam("createdBy") String createdBy) throws RestrictedInfoException {
+        if (createdBy.equalsIgnoreCase("^[a-z0-9]+$")){
+            throw new RestrictedInfoException();
+        }
+        return albumService.getByCreatedBy(createdBy);
+
     }
 
     @PutMapping

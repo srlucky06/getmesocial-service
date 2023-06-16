@@ -6,9 +6,10 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
 
-public interface AlbumRepository extends MongoRepository<Album, String>{
-
-        List<Album> findAllByAlbumId(String albumId);
-    }
+public interface AlbumRepository extends MongoRepository <Album, String>{
+       List<Album> findAllByAlbumId(String albumId);
+       List<Album> findByCreatedBy(String createdBy);
+       List<Album> findByName(String name);
+}
 
 

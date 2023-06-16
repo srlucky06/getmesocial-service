@@ -1,12 +1,20 @@
 package com.example.getmesocialservice.git.model;
 
+import com.example.getmesocialservice.git.validation.ValidCreator;
+import com.example.getmesocialservice.git.validation.ValidName;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Id;
+
+import javax.validation.constraints.Size;
 
 public class Album {
     @Id
     private String albumId;
+    @Size(max=10) @ValidName
     private String name;
+
     private String coverPhotoUrl;
+    @ValidCreator
     private String  createdBy;
     private String dateCreated;
 public Album(String albumId,String name,String coverPhotoUrl,String createdBy,String dateCreated){

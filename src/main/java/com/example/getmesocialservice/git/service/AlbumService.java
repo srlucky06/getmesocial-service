@@ -35,11 +35,13 @@ import java.util.List;
     public void deleteAlbum(String albumId) {
          albumRepository.deleteById(albumId);
     }
-
     public List<Album>  getByAlbumId(String albumId) {
             return albumRepository.findAllByAlbumId(albumId);
     }
-
-
-
+    public List<Album> getByCreatedBy(String createdBy) {
+        return  albumRepository.findByCreatedBy(createdBy);
+    }
+    public List<Album> getByName(String name) {
+        return albumRepository.findByName(name);
+    }
 }

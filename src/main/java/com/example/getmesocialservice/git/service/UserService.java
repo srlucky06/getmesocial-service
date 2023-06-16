@@ -38,6 +38,12 @@ public class UserService {
          return userRepository.findAllByAddress(address);
 
     }
+    public User getById(String id){
+        return userRepository.findById(id).get();
+    }
 
 
+    public List<User> getByName(String name) {
+        return  userRepository.findByName(name);
+    }
 }

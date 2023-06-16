@@ -1,13 +1,24 @@
 package com.example.getmesocialservice.git.model;
 
+import com.example.getmesocialservice.git.validation.ValidName;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Id;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 
 public class User {
    @Id
    private String id;
+   @NotEmpty @ValidName
    private String name;
+   @Length(max = 20) @NotEmpty  @Email
    private String address;
+   @Min(value=13) @Max(value=150)
    private int age;
+   @NotEmpty
    private String profilePicUrl;
 
    public User(String id,String name, String address, int age, String profilePicUrl) {
