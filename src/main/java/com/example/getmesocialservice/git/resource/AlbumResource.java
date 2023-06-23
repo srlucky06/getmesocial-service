@@ -5,6 +5,8 @@ import com.example.getmesocialservice.git.model.Album;
 import com.example.getmesocialservice.git.service.AlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 import java.util.NoSuchElementException;
 import java.util.List;
 
@@ -15,7 +17,7 @@ import java.util.List;
     @Autowired
     private AlbumService albumService;
     @PostMapping("/album")
-    public Album saveAlbum(@RequestBody Album album) {
+    public Album saveAlbum(@RequestBody @Valid Album album) {
         return albumService.saveAlbum(album);
 
     }
@@ -27,7 +29,7 @@ import java.util.List;
 
     @GetMapping("/find-by-name")
     public List<Album> getByName(@RequestParam("name") String name) throws RestrictedInfoException {
-        if ( name.length() >= 10)  {
+        if ( name.length() > 10)  {
             throw new RestrictedInfoException();
         }
         return albumService.getByName(name);
@@ -36,7 +38,7 @@ import java.util.List;
 
     @GetMapping("/find-by-createdBy")
     public List<Album> getByCreatedBy(@RequestParam("createdBy") String createdBy) throws RestrictedInfoException {
-        if (createdBy.equalsIgnoreCase("^[a-z0-9]+$")){
+        if  (!createdBy.matches("^[a-z0-9]+$")){
             throw new RestrictedInfoException();
         }
         return albumService.getByCreatedBy(createdBy);

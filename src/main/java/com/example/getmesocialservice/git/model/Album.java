@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 public class Album {
     @Id
     private String albumId;
-    @Size(max=10) @ValidName
+    @Size(max=10)
     private String name;
 
     private String coverPhotoUrl;

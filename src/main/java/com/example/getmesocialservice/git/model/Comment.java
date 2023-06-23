@@ -1,5 +1,7 @@
 package com.example.getmesocialservice.git.model;
 
+import com.example.getmesocialservice.git.validation.ValidCreator;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Id;
 
 public class Comment {
@@ -7,7 +9,9 @@ public class Comment {
     private String id;
     @Id
     private String photoId;
+    @Length(min = 5)
     private String message;
+    @ValidCreator
     private String createdBy;
     private String dateCreated;
 

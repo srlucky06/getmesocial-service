@@ -38,24 +38,17 @@ public class UserResource {
             throw new RestrictedInfoException();
         }
         return userService.getByName(name);
-
     }
-
     @GetMapping("/find-by-id")
     public User getById(@RequestParam("id") String id) {
         return userService.getById(id);
     }
-
-
     @PutMapping
     public User updateUser( @RequestBody User user) {
         return userService.updateUser(user);
-
     }
     @DeleteMapping
     public void deleteUser(@RequestParam(name="userId") String userId) {
         userService.deleteUser(userId);
     }
-
-
 }

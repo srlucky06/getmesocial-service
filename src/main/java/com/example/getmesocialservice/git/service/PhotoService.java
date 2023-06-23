@@ -26,4 +26,7 @@ public class PhotoService {
     public List<Photo> getById(String id){
         return photoRepository.findAllById(id);
     }
+
+    public List<Photo> getByCreatedBy(String createdBy) {
+     return  photoRepository.findByCreatedBy(createdBy);}
 }

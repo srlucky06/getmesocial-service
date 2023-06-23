@@ -1,5 +1,6 @@
 package com.example.getmesocialservice.git.model;
 
+import com.example.getmesocialservice.git.validation.ValidCreator;
 import org.springframework.data.annotation.Id;
 
 public class Photo {
@@ -8,6 +9,7 @@ public class Photo {
     @Id
     private String photoId;
     private String photoUrl;
+    @ValidCreator
     private String createdBy;
     private String dateCreated;
 

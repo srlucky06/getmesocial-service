@@ -1,5 +1,6 @@
 package com.example.getmesocialservice.git.service;
 
+import com.example.getmesocialservice.git.model.Album;
 import com.example.getmesocialservice.git.model.Comment;
 import com.example.getmesocialservice.git.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,4 +28,7 @@ public class CommentService {
     public List<Comment> getById(String id){
         return commentRepository.findAllById(id);
     }
+
+    public List<Comment> getByCreatedBy(String createdBy) {
+    return commentRepository.findByCreatedBy(createdBy);}
 }
